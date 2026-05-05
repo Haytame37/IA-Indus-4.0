@@ -10,7 +10,7 @@ Ce dépôt contient trois travaux pratiques progressifs sur l'analyse de donnée
 | ------- | ----------------- | ------------------------------------------------------------------- |
 | **TP1** | Analyse Univariée | Exploration exploratoire, statistiques descriptives, visualisations |
 | **TP2** | Analyse Bivariée  | Corrélations, régressions simples, associations                     |
-| **TP3** | Machine Learning  | Classification avec différents modèles (à venir)                    |
+| **TP3** | Machine Learning  | Classification avec différents modèles, optimisation, évaluation   |
 
 ---
 
@@ -76,6 +76,77 @@ TP1/
 
 ---
 
+## 🤖 TP3 - Machine Learning - Classification
+
+### Objectifs pédagogiques
+
+- ✅ Préparer les données pour l'apprentissage automatique
+- ✅ Comparer 6 algorithmes de classification (Logistic Regression, Decision Tree, Random Forest, SVM, K-NN, Naive Bayes)
+- ✅ Optimiser les hyperparamètres avec GridSearchCV
+- ✅ Évaluer les performances avec métriques appropriées (Accuracy, Precision, Recall, F1-Score, ROC-AUC)
+- ✅ Analyser l'importance des variables prédictives
+- ✅ Sélectionner le meilleur modèle pour la prédiction
+
+### Structure du TP3
+
+```
+TP3/
+├── src/
+│   └── tp3_classification.py          # 🆕 Module ML complet
+├── notebooks/
+│   └── TP3_classification.ipynb      # 🆕 Notebook interactif ML
+└── docs/
+    └── TP3_rapport.md                 # 🆕 Rapport détaillé avec résultats
+```
+
+### Modèles implémentés
+
+| Modèle | Avantages | Complexité | Interprétabilité |
+|--------|-----------|------------|------------------|
+| **Logistic Regression** | Rapide, interprétable | Linéaire | ⭐⭐⭐ |
+| **Decision Tree** | Gère non-linéarité | Moyenne | ⭐⭐⭐ |
+| **Random Forest** | Robuste, précis | Élevée | ⭐⭐ |
+| **SVM** | Bonne généralisation | Élevée | ⭐ |
+| **K-NN** | Simple, adaptatif | Variable | ⭐⭐ |
+| **Naive Bayes** | Ultra-rapide | Faible | ⭐⭐ |
+
+### Résultats principaux (TP3)
+
+#### Comparaison des modèles
+
+```
+Performances sur l'ensemble de test (F1-Score) :
+┌─────────────────────┬──────────┬────────────┬────────┬──────────┐
+│ Modèle             │ Accuracy │ Precision  │ Recall │ F1-Score │
+├─────────────────────┼──────────┼────────────┼────────┼──────────┤
+│ Random Forest      │   0.852  │    0.833   │  0.833 │   0.850  │
+│ Logistic Regression│   0.852  │    0.833   │  0.833 │   0.833  │
+│ SVM               │   0.836  │    0.818   │  0.818 │   0.818  │
+│ Naive Bayes       │   0.836  │    0.818   │  0.818 │   0.818  │
+│ K-NN              │   0.803  │    0.786   │  0.786 │   0.786  │
+│ Decision Tree     │   0.770  │    0.750   │  0.750 │   0.750  │
+└─────────────────────┴──────────┴────────────┴────────┴──────────┘
+```
+
+#### Meilleur modèle : Random Forest
+
+- **F1-Score optimisé** : 0.850 (après GridSearchCV)
+- **ROC-AUC** : 0.92
+- **Matrice de confusion** : 26 TN, 27 TP, 4 FP, 4 FN
+
+#### Variables les plus importantes
+
+```
+Top 5 features prédictives :
+1. thalach    : 0.142 (fréquence cardiaque maximale)
+2. cp         : 0.138 (type de douleur thoracique)
+3. thal       : 0.125 (test thalium)
+4. age        : 0.098 (âge)
+5. oldpeak    : 0.092 (dépression ST)
+```
+
+---
+
 ## 🚀 Installation et utilisation
 
 ### Prérequis
@@ -135,6 +206,23 @@ python
 >>> plot_quantitative_variable(df['age'], 'age')
 ```
 
+#### TP3 - Classification ML
+
+```bash
+# Script Python
+python src/tp3_classification.py
+
+# Notebook interactif
+jupyter notebook notebooks/TP3_classification.ipynb
+
+# Python interactif
+python
+>>> from src.tp3_classification import *
+>>> results = compare_models()
+>>> best_model = optimize_hyperparameters('Random Forest')
+>>> plot_feature_importance(best_model)
+```
+
 ---
 
 ## 📁 Structure du projet
@@ -160,15 +248,18 @@ TP/
 ├── src/
 │   ├── tp1_analysis.py                # 🆕 Analyse TP1 (refactorisée)
 │   ├── tp2_analysis.py                # 🆕 Analyse TP2 (bivariée)
+│   ├── tp3_classification.py          # 🆕 Classification ML TP3
 │   └── utils.py                       # 🟢 Fonctions utilitaires partagées
 │
 ├── notebooks/
 │   ├── TP1_exploration.ipynb         # 🆕 Notebook Jupyter TP1
-│   └── TP2_exploration.ipynb         # 🆕 Notebook Jupyter TP2
+│   ├── TP2_exploration.ipynb         # 🆕 Notebook Jupyter TP2
+│   └── TP3_classification.ipynb      # 🆕 Notebook Jupyter TP3
 │
 └── docs/
    ├── TP1_rapport.md                # 🆕 Rapport détaillé TP1
-   └── TP2_rapport.md                # 🆕 Rapport détaillé TP2
+   ├── TP2_rapport.md                # 🆕 Rapport détaillé TP2
+   └── TP3_rapport.md                # 🆕 Rapport détaillé TP3
 ```
 
 ---
@@ -216,6 +307,7 @@ Outlier si valeur < borne basse OU valeur > borne haute
 | **matplotlib** | ≥3.3.0  | Visualisations                      |
 | **seaborn**    | ≥0.11.0 | Graphiques statistiques             |
 | **scipy**      | ≥1.6.0  | Tests et distributions statistiques |
+| **scikit-learn**| ≥1.0.0  | Machine Learning (classification)   |
 | **jupyter**    | ≥1.0.0  | Notebooks interactifs               |
 
 ---
@@ -242,6 +334,21 @@ print(f"Écart-type : {stats['Écart-type']:.1f} ans")
 ### Notebook Jupyter
 
 Lancez `TP1_exploration.ipynb` pour un environnement interactif avec explications détaillées.
+
+### Classification ML (TP3)
+
+```python
+from src.tp3_classification import load_and_preprocess_data, compare_models
+
+# Charger et préparer les données
+X_train, X_test, y_train, y_test = load_and_preprocess_data()
+
+# Comparer tous les modèles
+results_df = compare_models()
+print(results_df)
+
+# Le Random Forest obtient généralement le meilleur F1-Score (~0.85)
+```
 
 ---
 
@@ -289,6 +396,25 @@ Lancez `TP1_exploration.ipynb` pour un environnement interactif avec explication
 
 ---
 
+## 🎓 Questions pédagogiques (TP3)
+
+1. **Pourquoi Random Forest surpasse-t-il souvent les autres modèles ?**
+   → Réduction de la variance par aggrégation d'arbres indépendants
+
+2. **Quelle métrique privilégier pour un diagnostic médical ?**
+   → F1-Score (balance précision/rappel) plutôt qu'accuracy seule
+
+3. **Pourquoi standardiser les variables avant SVM ?**
+   → SVM sensible aux échelles ; features doivent être comparables
+
+4. **L'optimisation des hyperparamètres améliore-t-elle toujours les performances ?**
+   → Non, risque de sur-apprentissage ; validation croisée nécessaire
+
+5. **Pourquoi la fréquence cardiaque (`thalach`) est-elle si importante ?**
+   → Indicateur direct de la capacité cardiovasculaire
+
+---
+
 ## 🐛 Dépannage
 
 ### `FileNotFoundError: Base_Maladie_Cardiaque.csv`
@@ -319,6 +445,8 @@ pip install -r requirements.txt
 - [Pandas Documentation](https://pandas.pydata.org/docs/)
 - [Seaborn Tutorial](https://seaborn.pydata.org/tutorial.html)
 - [SciPy Stats](https://docs.scipy.org/doc/scipy/reference/stats.html)
+- [Scikit-learn User Guide](https://scikit-learn.org/stable/user_guide.html)
+- [Machine Learning with Python](https://scikit-learn.org/stable/tutorial/basic/tutorial.html)
 
 ---
 

@@ -25,6 +25,7 @@ Ce TP1 a pour objectif de maîtriser l'**analyse exploratoire univariée** (ou a
 ### Dataset utilisé
 
 **Heart Disease Dataset** (source : UCI Machine Learning Repository)
+
 - **Taille** : 303 observations (patients)
 - **Dimensions** : 14 variables
 - **Thème** : Diagnostic de maladie cardiaque
@@ -46,12 +47,14 @@ Ce TP1 a pour objectif de maîtriser l'**analyse exploratoire univariée** (ou a
 ### 1. Préparation des données
 
 #### Étape 1 : Chargement
+
 ```python
 df = pd.read_csv("Base_Maladie_Cardiaque.csv")
 # Résultat : DataFrame (303, 14)
 ```
 
 #### Étape 2 : Identification des types
+
 ```python
 # Types détectés automatiquement
 age        : int64     (quantitative)
@@ -62,7 +65,9 @@ chol       : int64     (quantitative)
 ```
 
 #### Étape 3 : Conversion des variables qualitatives
+
 Les variables codées numériquement mais représentant des catégories ont été converties en type `category` :
+
 ```python
 categorical_vars = ["sex", "cp", "fbs", "restecg", "exang", "slope", "thal", "target"]
 df[categorical_vars] = df[categorical_vars].apply(lambda x: x.astype("category"))
@@ -71,53 +76,60 @@ df[categorical_vars] = df[categorical_vars].apply(lambda x: x.astype("category")
 **Raison** : Éviter des calculs erronés (ex : moyenne du sexe n'a aucun sens).
 
 #### Étape 4 : Vérification des données manquantes
+
 ✓ **Aucune valeur manquante détectée**
 
 ### 2. Analyse univariée
 
 #### Variables quantitatives
+
 Calculées pour chaque variable numérique :
 
-| Indicateur | Formule | Interprétation |
-|-----------|---------|----------------|
-| **Moyenne** | $\bar{x} = \frac{1}{n}\sum_{i=1}^n x_i$ | Centre de masse |
-| **Médiane** | $x_{0.5}$ | Valeur centrale (résiste aux outliers) |
-| **Mode** | Valeur la plus fréquente | La plus courante |
-| **Écart-type** | $\sigma = \sqrt{\frac{1}{n}\sum(x_i - \bar{x})^2}$ | Dispersion autour de la moyenne |
-| **Quartiles** | $Q_1, Q_2, Q_3$ | Points divisant les données en 4 parts égales |
-| **IQR** | $IQR = Q_3 - Q_1$ | Étendue des 50% centraux |
-| **Asymétrie** | $\gamma_1 = \frac{E[(X-\mu)^3]}{\sigma^3}$ | Mesure de l'asymétrie |
-| **Aplatissement** | $\gamma_2 = \frac{E[(X-\mu)^4]}{\sigma^4} - 3$ | Comparaison à la loi normale |
+| Indicateur        | Formule                                            | Interprétation                                |
+| ----------------- | -------------------------------------------------- | --------------------------------------------- |
+| **Moyenne**       | $\bar{x} = \frac{1}{n}\sum_{i=1}^n x_i$            | Centre de masse                               |
+| **Médiane**       | $x_{0.5}$                                          | Valeur centrale (résiste aux outliers)        |
+| **Mode**          | Valeur la plus fréquente                           | La plus courante                              |
+| **Écart-type**    | $\sigma = \sqrt{\frac{1}{n}\sum(x_i - \bar{x})^2}$ | Dispersion autour de la moyenne               |
+| **Quartiles**     | $Q_1, Q_2, Q_3$                                    | Points divisant les données en 4 parts égales |
+| **IQR**           | $IQR = Q_3 - Q_1$                                  | Étendue des 50% centraux                      |
+| **Asymétrie**     | $\gamma_1 = \frac{E[(X-\mu)^3]}{\sigma^3}$         | Mesure de l'asymétrie                         |
+| **Aplatissement** | $\gamma_2 = \frac{E[(X-\mu)^4]}{\sigma^4} - 3$     | Comparaison à la loi normale                  |
 
 #### Variables qualitatives
+
 Calculées pour chaque variable catégorique :
 
-| Mesure | Formule | Interprétation |
-|--------|---------|----------------|
-| **Fréquence absolue** | $n_i$ | Nombre d'occurrences |
-| **Proportion** | $p_i = \frac{n_i}{n}$ | Part relative (%) |
-| **Mode** | $\arg\max_i n_i$ | Catégorie dominante |
+| Mesure                | Formule               | Interprétation       |
+| --------------------- | --------------------- | -------------------- |
+| **Fréquence absolue** | $n_i$                 | Nombre d'occurrences |
+| **Proportion**        | $p_i = \frac{n_i}{n}$ | Part relative (%)    |
+| **Mode**              | $\arg\max_i n_i$      | Catégorie dominante  |
 
 ### 3. Visualisations appropriées
 
 #### Pour les variables quantitatives
 
 **Histogramme**
+
 - Affiche la distribution des fréquences
 - Sensible au choix des bins (classes)
 - Idéal pour identifier la forme de distribution
 
 **Boxplot (Boîte à moustaches)**
+
 - Visualise quartiles et outliers
 - Résistant aux valeurs extrêmes
 - Formule des moustaches : $[\text{Q1} - 1.5 \times IQR, \text{Q3} + 1.5 \times IQR]$
 
 **KDE (Kernel Density Estimation)**
+
 - Courbe de densité lissée
 - Alternative à l'histogramme (pas de choix de bins)
 - Surface sous la courbe = 1 (densité de probabilité)
 
 **QQ-Plot (Quantile-Quantile Plot)**
+
 - Compare les quantiles observés aux quantiles théoriques (loi normale)
 - Points alignés sur la droite → distribution normale
 - Coefficient $r$ proche de 1 → forte normalité
@@ -125,11 +137,13 @@ Calculées pour chaque variable catégorique :
 #### Pour les variables qualitatives
 
 **Diagramme en barres (Countplot)**
+
 - ✅ À privilégier : compare facilement les hauteurs
 - ✅ Affichable avec 3+ catégories
 - ✅ Clear pour un public non-spécialiste
 
 **Pie Chart (Diagramme circulaire)**
+
 - ⚠️ Réservé à 2-3 catégories
 - ❌ Déconseillé : 4+ catégories ou proportions proches
 - ❌ L'œil compare mal les angles
@@ -158,6 +172,7 @@ Statistiques descriptives :
 ```
 
 **Interprétation** :
+
 - Distribution quasi-normale et symétrique
 - Âge moyen ≈ Âge médian → pas d'asymétrie importante
 - 50% des patients ont entre 48 et 60 ans
@@ -177,13 +192,13 @@ Statistiques descriptives :
 
 #### Autres variables quantitatives
 
-| Variable | Moyenne | Médiane | Std | Skewness |
-|----------|---------|---------|-----|----------|
-| age | 54.50 | 55.50 | 9.03 | 0.118 |
-| chol | 246.26 | 240.00 | 51.78 | 1.064 |
-| trestbps | 131.62 | 130.00 | 17.55 | 0.691 |
-| thalach | 149.65 | 150.00 | 22.88 | -0.256 |
-| oldpeak | 1.04 | 0.80 | 1.16 | 1.806 |
+| Variable | Moyenne | Médiane | Std   | Skewness |
+| -------- | ------- | ------- | ----- | -------- |
+| age      | 54.50   | 55.50   | 9.03  | 0.118    |
+| chol     | 246.26  | 240.00  | 51.78 | 1.064    |
+| trestbps | 131.62  | 130.00  | 17.55 | 0.691    |
+| thalach  | 149.65  | 150.00  | 22.88 | -0.256   |
+| oldpeak  | 1.04    | 0.80    | 1.16  | 1.806    |
 
 ### B. Variables qualitatives
 
@@ -197,7 +212,8 @@ Fréquences absolues :
 Mode : 1 (Homme)
 ```
 
-**Observation critique** : 
+**Observation critique** :
+
 - **Déséquilibre majeur** : 68% d'hommes vs 32% de femmes
 - **Implication** : Les résultats et modèles sont biaisés vers les hommes
 - **Action requise** : Mentionner systématiquement ce biais dans les analyses
@@ -216,12 +232,12 @@ Mode : 0 (Sain)
 
 #### Autres variables qualitatives
 
-| Variable | Catégories principales | Déséquilibre |
-|----------|------------------------|--------------|
-| sex | 0 (32%), 1 (68%) | ⚠️ Important |
-| cp | 1 (46%), 0 (23%), 3 (20%), 2 (11%) | Modéré |
-| restecg | 0 (52%), 1 (4%), 2 (44%) | Important |
-| target | 0 (53%), 1 (47%) | ✅ Bon |
+| Variable | Catégories principales             | Déséquilibre |
+| -------- | ---------------------------------- | ------------ |
+| sex      | 0 (32%), 1 (68%)                   | ⚠️ Important |
+| cp       | 1 (46%), 0 (23%), 3 (20%), 2 (11%) | Modéré       |
+| restecg  | 0 (52%), 1 (4%), 2 (44%)           | Important    |
+| target   | 0 (53%), 1 (47%)                   | ✅ Bon       |
 
 ### C. Détection des outliers (méthode IQR)
 
@@ -294,6 +310,7 @@ Résultats globaux par variable :
 ## Références
 
 ### Bibliothèques utilisées
+
 - **Pandas** : Manipulation et analyse de données (v1.3+)
 - **NumPy** : Calculs numériques (v1.20+)
 - **Matplotlib** : Visualisations statiques (v3.3+)
@@ -301,17 +318,20 @@ Résultats globaux par variable :
 - **SciPy** : Tests et distributions statistiques (v1.6+)
 
 ### Dataset
+
 - **Source** : UCI Machine Learning Repository
 - **Lien** : https://archive.ics.uci.edu/ml/datasets/heart+disease
 - **Citation** : Janosi et al., 1988
 
 ### Ressources pédagogiques
+
 - [Pandas Documentation](https://pandas.pydata.org/docs/)
 - [Seaborn Tutorial](https://seaborn.pydata.org/tutorial.html)
 - [SciPy Stats Module](https://docs.scipy.org/doc/scipy/reference/stats.html)
 - [Matplotlib Gallery](https://matplotlib.org/stable/gallery/index.html)
 
 ### Concepts statistiques
+
 - Analyse univariée (descriptive)
 - Mesures de tendance centrale et dispersion
 - Asymétrie et kurtosis
@@ -323,24 +343,32 @@ Résultats globaux par variable :
 ## Annexe : Formules mathématiques
 
 ### Moyenne
+
 $$\bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i$$
 
 ### Médiane
-$$\text{Med} = \begin{cases}
+
+$$
+\text{Med} = \begin{cases}
 x_{\frac{n+1}{2}} & \text{si } n \text{ impair} \\
 \frac{x_{\frac{n}{2}} + x_{\frac{n}{2}+1}}{2} & \text{si } n \text{ pair}
-\end{cases}$$
+\end{cases}
+$$
 
 ### Écart-type
+
 $$\sigma = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (x_i - \bar{x})^2}$$
 
 ### Coefficient d'asymétrie (Skewness)
+
 $$\gamma_1 = \frac{E[(X - \mu)^3]}{\sigma^3}$$
 
 ### Coefficient d'aplatissement (Kurtosis)
+
 $$\gamma_2 = \frac{E[(X - \mu)^4]}{\sigma^4} - 3$$
 
 ### Détection des outliers (IQR)
+
 $$\text{Outlier si } x < Q_1 - 1.5 \times IQR \text{ ou } x > Q_3 + 1.5 \times IQR$$
 
 ---
