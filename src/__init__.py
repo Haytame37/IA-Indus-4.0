@@ -12,5 +12,6 @@ __author__ = "Étudiants IA-Industrie 4.0, ENSAM Béni Mellal"
 
 from . import utils
 from . import tp1_analysis
+from . import tp2_analysis
 
-__all__ = ['utils', 'tp1_analysis']
+__all__ = ['utils', 'tp1_analysis', 'tp2_analysis']

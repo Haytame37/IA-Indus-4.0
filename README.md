@@ -6,11 +6,11 @@ Bienvenue dans le dépôt des Travaux Pratiques (TP) pour le cours **Intelligenc
 
 Ce dépôt contient trois travaux pratiques progressifs sur l'analyse de données et le machine learning appliqués au contexte industriel :
 
-| TP | Titre | Objectifs |
-|-------|-------|-----------|
+| TP      | Titre             | Objectifs                                                           |
+| ------- | ----------------- | ------------------------------------------------------------------- |
 | **TP1** | Analyse Univariée | Exploration exploratoire, statistiques descriptives, visualisations |
-| **TP2** | Analyse Bivariée | Corrélations, régressions simples, associations |
-| **TP3** | Machine Learning | Classification avec différents modèles (à venir) |
+| **TP2** | Analyse Bivariée  | Corrélations, régressions simples, associations                     |
+| **TP3** | Machine Learning  | Classification avec différents modèles (à venir)                    |
 
 ---
 
@@ -43,24 +43,26 @@ TP1/
 ### Données utilisées
 
 **Heart Disease Dataset** (UCI Machine Learning Repository)
+
 - 📊 303 patients
 - 📈 14 variables (âge, sexe, type de douleur thoracique, cholestérol, etc.)
 - 🎯 Cible : présence/absence de maladie cardiaque
 
 ### Variables clés
 
-| Variable | Type | Description |
-|----------|------|-------------|
-| `age` | Quantitative | Âge du patient (années) |
-| `sex` | Qualitative | 0 = Femme, 1 = Homme |
-| `cp` | Qualitative | Type de douleur thoracique |
-| `chol` | Quantitative | Cholestérol (mg/dl) |
+| Variable  | Type         | Description                      |
+| --------- | ------------ | -------------------------------- |
+| `age`     | Quantitative | Âge du patient (années)          |
+| `sex`     | Qualitative  | 0 = Femme, 1 = Homme             |
+| `cp`      | Qualitative  | Type de douleur thoracique       |
+| `chol`    | Quantitative | Cholestérol (mg/dl)              |
 | `thalach` | Quantitative | Fréquence cardiaque max atteinte |
-| `target` | Qualitative | 0 = Sain, 1 = Malade |
+| `target`  | Qualitative  | 0 = Sain, 1 = Malade             |
 
 ### Résultats principaux (TP1)
 
 #### Variable `age`
+
 - **Moyenne** : 54.5 ans
 - **Médiane** : 55.5 ans
 - **Écart-type** : 9.0 ans
@@ -68,6 +70,7 @@ TP1/
 - **Asymétrie** : 0.12 (légèrement asymétrique)
 
 #### Variable `sex`
+
 - **Répartition** : 68% d'hommes, 32% de femmes
 - **Observation** : Dataset déséquilibré (biais à considérer)
 
@@ -83,12 +86,14 @@ TP1/
 ### Installation
 
 1. **Cloner le dépôt**
+
 ```bash
 git clone https://github.com/Haytame37/IA-Indus-4.0.git
 cd IA-Indus-4.0/TP
 ```
 
 2. **Créer un environnement virtuel**
+
 ```bash
 python -m venv venv
 
@@ -100,6 +105,7 @@ source venv/bin/activate
 ```
 
 3. **Installer les dépendances**
+
 ```bash
 pip install -r requirements.txt
 ```
@@ -107,17 +113,20 @@ pip install -r requirements.txt
 ### Exécution
 
 #### Option 1 : Script Python directement
+
 ```bash
 # Depuis le répertoire TP/
 python src/tp1_analysis.py
 ```
 
 #### Option 2 : Jupyter Notebook (interactif)
+
 ```bash
 jupyter notebook notebooks/TP1_exploration.ipynb
 ```
 
 #### Option 3 : Python interactif
+
 ```bash
 python
 >>> from src.tp1_analysis import *
@@ -150,16 +159,16 @@ TP/
 │
 ├── src/
 │   ├── tp1_analysis.py                # 🆕 Analyse TP1 (refactorisée)
-│   ├── tp2_analysis.py                # (À venir) Analyse TP2
-│   └── utils.py                       # (À venir) Fonctions partagées
+│   ├── tp2_analysis.py                # 🆕 Analyse TP2 (bivariée)
+│   └── utils.py                       # 🟢 Fonctions utilitaires partagées
 │
 ├── notebooks/
 │   ├── TP1_exploration.ipynb         # 🆕 Notebook Jupyter TP1
-│   └── TP2_exploration.ipynb         # (À venir) Notebook TP2
+│   └── TP2_exploration.ipynb         # 🆕 Notebook Jupyter TP2
 │
 └── docs/
-    ├── TP1_rapport.md                # 🆕 Rapport détaillé TP1
-    └── TP2_rapport.md                # (À venir) Rapport TP2
+   ├── TP1_rapport.md                # 🆕 Rapport détaillé TP1
+   └── TP2_rapport.md                # 🆕 Rapport détaillé TP2
 ```
 
 ---
@@ -168,13 +177,13 @@ TP/
 
 ### Statistiques Descriptives
 
-| Concept | Formule | Interprétation |
-|---------|---------|----------------|
-| **Moyenne** | $\bar{x} = \frac{1}{n}\sum x_i$ | Centre de masse |
-| **Médiane** | Valeur centrale | Résistante aux outliers |
+| Concept        | Formule                                            | Interprétation                  |
+| -------------- | -------------------------------------------------- | ------------------------------- |
+| **Moyenne**    | $\bar{x} = \frac{1}{n}\sum x_i$                    | Centre de masse                 |
+| **Médiane**    | Valeur centrale                                    | Résistante aux outliers         |
 | **Écart-type** | $\sigma = \sqrt{\frac{1}{n}\sum(x_i - \bar{x})^2}$ | Dispersion autour de la moyenne |
-| **IQR** | $Q_3 - Q_1$ | Étendue des 50% centraux |
-| **Asymétrie** | $\frac{E[(X-\mu)^3]}{\sigma^3}$ | Forme de distribution |
+| **IQR**        | $Q_3 - Q_1$                                        | Étendue des 50% centraux        |
+| **Asymétrie**  | $\frac{E[(X-\mu)^3]}{\sigma^3}$                    | Forme de distribution           |
 
 ### Visualisations
 
@@ -188,6 +197,7 @@ TP/
 ### Détection des Outliers
 
 Méthode IQR :
+
 ```
 Borne basse = Q1 - 1.5 × IQR
 Borne haute = Q3 + 1.5 × IQR
@@ -198,15 +208,15 @@ Outlier si valeur < borne basse OU valeur > borne haute
 
 ## 🔧 Technologies utilisées
 
-| Outil | Version | Usage |
-|-------|---------|-------|
-| **Python** | 3.8+ | Langage principal |
-| **pandas** | ≥1.3.0 | Manipulation de DataFrames |
-| **numpy** | ≥1.20.0 | Calculs numériques |
-| **matplotlib** | ≥3.3.0 | Visualisations |
-| **seaborn** | ≥0.11.0 | Graphiques statistiques |
-| **scipy** | ≥1.6.0 | Tests et distributions statistiques |
-| **jupyter** | ≥1.0.0 | Notebooks interactifs |
+| Outil          | Version | Usage                               |
+| -------------- | ------- | ----------------------------------- |
+| **Python**     | 3.8+    | Langage principal                   |
+| **pandas**     | ≥1.3.0  | Manipulation de DataFrames          |
+| **numpy**      | ≥1.20.0 | Calculs numériques                  |
+| **matplotlib** | ≥3.3.0  | Visualisations                      |
+| **seaborn**    | ≥0.11.0 | Graphiques statistiques             |
+| **scipy**      | ≥1.6.0  | Tests et distributions statistiques |
+| **jupyter**    | ≥1.0.0  | Notebooks interactifs               |
 
 ---
 
@@ -238,21 +248,25 @@ Lancez `TP1_exploration.ipynb` pour un environnement interactif avec explication
 ## ✨ Bonnes pratiques appliquées
 
 ✅ **Code professionnel** :
+
 - Docstrings claires pour chaque fonction
 - Types annotations
 - Noms de variables explicites
 
 ✅ **Reproductibilité** :
+
 - Chemin de données centralisé
 - Seed aléatoire fixé
 - Versions de dépendances spécifiées
 
 ✅ **Documentation** :
+
 - README détaillé
 - Commentaires en français
 - Exemples d'utilisation
 
 ✅ **Git workflow** :
+
 - .gitignore approprié
 - Commits clairs et atomiques
 - Branches pour chaque TP (optionnel)
@@ -278,16 +292,21 @@ Lancez `TP1_exploration.ipynb` pour un environnement interactif avec explication
 ## 🐛 Dépannage
 
 ### `FileNotFoundError: Base_Maladie_Cardiaque.csv`
+
 **Solution** : Assurez-vous que le fichier CSV est dans `data/`
 
 ### `ModuleNotFoundError: No module named 'seaborn'`
+
 **Solution** : Réinstallez les dépendances :
+
 ```bash
 pip install -r requirements.txt
 ```
 
 ### Plots ne s'affichent pas dans Jupyter
+
 **Solution** : Ajoutez en début de notebook :
+
 ```python
 %matplotlib inline
 ```
@@ -306,6 +325,7 @@ pip install -r requirements.txt
 ## 📧 Support
 
 Pour toute question ou problème :
+
 - Consultez la documentation dans `docs/`
 - Ouvrez une issue sur GitHub
 - Contactez l'instructeur
@@ -328,4 +348,4 @@ Ce projet est sous licence [MIT](LICENSE).
 
 **Dernière mise à jour** : 5 mai 2026
 
-*Bon travail et bonne analyse des données ! 📊*
+_Bon travail et bonne analyse des données ! 📊_

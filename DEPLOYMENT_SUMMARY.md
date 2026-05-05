@@ -41,6 +41,7 @@ TP/
 ## 🎯 Fichiers clés créés/refactorisés
 
 ### 1. **src/tp1_analysis.py** (✨ Nouveau - 400+ lignes)
+
 - Structure modulaire avec fonctions réutilisables
 - Docstrings complètes et commentaires détaillés
 - Fonctionnalités :
@@ -51,6 +52,7 @@ TP/
   - `detect_outliers_iqr()` : Détection automatique
 
 ### 2. **README.md** (✨ Nouveau - Complet)
+
 - Vue d'ensemble du projet
 - Instructions d'installation et utilisation
 - Concepts clés avec formules mathématiques
@@ -58,6 +60,7 @@ TP/
 - Dépannage et références
 
 ### 3. **docs/TP1_rapport.md** (✨ Nouveau - Professionnel)
+
 - Rapport scientifique détaillé (20+ pages)
 - Méthodologie complète
 - Résultats avec interprétations
@@ -65,11 +68,13 @@ TP/
 - Annexes avec formules mathématiques
 
 ### 4. **notebooks/TP1_exploration.ipynb** (✨ Nouveau)
+
 - Notebook Jupyter interactif
 - 15+ cellules avec analyses et visualisations
 - Environnement d'apprentissage complètement structuré
 
 ### 5. **requirements.txt** (Configuration)
+
 ```
 pandas>=1.3.0
 numpy>=1.20.0
@@ -81,6 +86,7 @@ ipython>=7.0.0
 ```
 
 ### 6. **.gitignore** (Configuration)
+
 - Ignores : `__pycache__/`, `*.ipynb` (sauf notebooks/), `venv/`, `.vscode/`
 - Autorise : Sources Python, documentation, notebooks professionnels
 
@@ -89,6 +95,7 @@ ipython>=7.0.0
 ## 📊 Résultats d'analyse (TP1 Summary)
 
 ### Variables analysées
+
 - **Quantitatives** : 9 variables (age, chol, trestbps, thalach, oldpeak, etc.)
 - **Qualitatives** : 5 variables (sex, cp, fbs, restecg, exang, slope, thal, target)
 
@@ -104,11 +111,13 @@ ipython>=7.0.0
 | Outliers | 0 |
 
 **Sex (déséquilibre majeur)**
+
 - Femmes : 96 (31.7%)
 - Hommes : 207 (68.3%)
 - ⚠️ À considérer pour TP2/TP3
 
 ### Outliers détectés
+
 - **oldpeak** : 28 outliers (9.2%)
 - **chol** : 12 outliers (4.0%)
 - **trestbps** : 6 outliers (2.0%)
@@ -124,7 +133,7 @@ ipython>=7.0.0
    - Organisation selon conventions Python PEP-8
 
 2. **[FAIT]** Refactorisation du code
-   - Fusion TP1.py + TP1_.py
+   - Fusion TP1.py + TP1\_.py
    - Extraction en fonctions modulaires
    - Ajout docstrings et annotations de type
 
@@ -170,6 +179,7 @@ jupyter notebook notebooks/TP1_exploration.ipynb
 ```
 
 ### Résultats
+
 - Graphiques affichés dans la console/notebook
 - Statistiques descriptives calculées automatiquement
 - Outliers détectés et listés
@@ -204,29 +214,34 @@ git status  # "Your branch is up to date with 'origin/main'"
 ## ✨ Points forts du déploiement
 
 ✅ **Code professionnel**
+
 - Docstrings complètes (PEP-257)
 - Noms explicites et conventions PEP-8
 - Fonctions modulaires et réutilisables
 
 ✅ **Documentation**
+
 - README complet avec exemples
 - Rapport scientifique détaillé (20+ pages)
 - Mathématiques formelles (LaTeX)
 
 ✅ **Reproductibilité**
+
 - Environment.yml / requirements.txt
 - Chemins de données centralisés
 - Code sans dépendances d'IDE
 
 ✅ **Bonnes pratiques Git**
+
 - Messages de commit structurés
 - .gitignore approprié
 - Commits atomiques et logiques
 
 ✅ **Apprentissage**
+
 - Notebook Jupyter interactif
 - Explications détaillées en français
-- Prêt pour TP2 et TP3
+- TP2 implémenté et prêt pour TP3
 
 ---
 
@@ -252,6 +267,7 @@ git status  # "Your branch is up to date with 'origin/main'"
 ## 📞 Support
 
 Pour toute question ou problème :
+
 1. Consultez le `README.md`
 2. Voir le rapport détaillé dans `docs/TP1_rapport.md`
 3. Exécutez le notebook : `notebooks/TP1_exploration.ipynb`
@@ -282,4 +298,4 @@ Prêt pour l'enseignement et la collaboration ! 🚀
 
 ---
 
-*Généré le 5 mai 2026 - Dernier commit: `dc54507` (HEAD -> main, origin/main)*
+_Généré le 5 mai 2026 - Dernier commit: `dc54507` (HEAD -> main, origin/main)_
