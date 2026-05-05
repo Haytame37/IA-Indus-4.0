@@ -34,6 +34,7 @@ MANIFEST
 # Jupyter Notebook
 .ipynb_checkpoints
 *.ipynb
+!notebooks/*.ipynb
 
 # PyCharm
 .idea/
