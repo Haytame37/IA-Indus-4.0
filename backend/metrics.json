@@ -1,0 +1,31 @@
+{
+  "accuracy": 0.86,
+  "f1_macro": 0.8413,
+  "classes": [
+    "Faible",
+    "Haut",
+    "Moyen"
+  ],
+  "confusion_matrix": [
+    [
+      80,
+      6,
+      2
+    ],
+    [
+      4,
+      130,
+      3
+    ],
+    [
+      11,
+      16,
+      48
+    ]
+  ],
+  "f1_per_class": {
+    "Faible": 0.8743,
+    "Haut": 0.8997,
+    "Moyen": 0.75
+  }
+}
