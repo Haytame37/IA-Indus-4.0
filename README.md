@@ -469,7 +469,7 @@ Ce projet est sous licence [MIT](LICENSE).
 ## ✍️ Auteurs
 
 - **Étudiants** : Classe IA-Industrie 4.0, ENSAM Béni Mellal
-- **Instructeur** : [À compléter]
+- **Instructeur** : Haytame37
 - **Date** : Mai 2026
 
 ---
